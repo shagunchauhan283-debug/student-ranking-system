@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Student Ranking and Result Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>Student Ranking and Result Management System</h1>
+<p class="sub">Advance Data Structures (25CSH-202) · Max Heap + Hash Table with chaining · Chandigarh University · Web demo of the C++ project</p>
+
+<div id="msg"></div>
+
+<div class="grid">
+ <div class="card">
+  <h2>Add / Update / Delete</h2>
+  <label>Roll number</label><input id="roll" placeholder="e.g. 101">
+  <label>Name (for Add)</label><input id="name" placeholder="e.g. Asha">
+  <label>Marks (0–100)</label><input id="marks" type="number" placeholder="e.g. 88">
+  <div class="row">
+   <button onclick="addS()">Add</button>
+   <button class="s" onclick="updS()">Update marks</button>
+   <button class="d" onclick="delS()">Delete</button>
+  </div>
+ </div>
+ <div class="card">
+  <h2>Search by roll number (hash lookup)</h2>
+  <label>Roll number</label><input id="sroll" placeholder="e.g. 104">
+  <div class="row"><button onclick="srch()">Search</button><button class="s" onclick="loadSample()">Load sample data</button><button class="s" onclick="clearAll()">Clear all</button></div>
+  <div id="sres" style="margin-top:12px"></div>
+  <div class="row"><button class="s" onclick="show(10)">Show top 10</button><button class="s" onclick="show(Infinity)">Show full ranking</button></div>
+ </div>
+</div>
+
+<div class="card" style="margin-bottom:14px">
+ <h2 id="rt">Ranking</h2>
+ <div class="wrap"><table><thead><tr><th>Rank</th><th>Roll</th><th>Name</th><th>Marks</th></tr></thead><tbody id="rank"></tbody></table></div>
+</div>
+
+<div class="grid">
+ <div class="card"><h2>Max heap (array form)</h2><div class="arr" id="heapv"></div>
+  <p class="sub" style="margin-top:8px">Parent of i = (i−1)/2 · children = 2i+1, 2i+2</p></div>
+ <div class="card"><h2>Hash table (<span id="bn"></span> buckets)</h2><div id="hashv"></div>
+  <p class="sub" style="margin-top:8px">h = (h × 31 + char) mod size · resize at load factor &gt; 0.75</p></div>
+</div>
+<footer>Ties share a rank; the student added earlier is listed first. Complexity: search O(1) avg · add / update / delete O(log n).</footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
